@@ -10,10 +10,10 @@ public class Velo {
         int fin = clavier.nextInt();
 
         int dureeLocation = fin - debut;
-        double tarifHoraire = 0.0;
-        double tarifNuit = 1.0;
-        double tarifJour = 2.0;
-        double coutLocation = 0.0;
+        double tarifHoraire = 0;
+        int tarifNuit = 1;
+        int tarifJour = 2;
+        int coutLocation = 0;
         
         if (debut<0 || debut>24) {
         	System.out.println("Les heures doivent être comprises entre 0 et 24 !");
@@ -25,15 +25,15 @@ public class Velo {
         			System.out.println("Bizarre, le début de la location est après la fin ...");
         		}
         
-        if (debut < 7 && debut > 17 || fin < 7 && fin > 17) {
+        if (fin < 7 && fin > 17 && debut < 7 && debut > 17) {
         	coutLocation = dureeLocation * tarifNuit;
         	tarifHoraire = tarifNuit;
         }
-        	if (debut > 7 && debut < 17 || fin > 7 && fin < 17) {
-        		coutLocation = dureeLocation * tarifJour;
-        		tarifHoraire = tarifJour;
+        if (fin >= 7 && fin <= 17 && debut >= 7 && debut <= 17) {
+        	coutLocation = dureeLocation * tarifJour;
+        	tarifHoraire = tarifJour;
         	}
-        System.out.println("Vous avez loué votre vélo pendant "+dureeLocation+" heures au tarif horaire de "+tarifHoraire+" franc(s)");
+    	System.out.println("Vous avez loué votre vélo pendant "+dureeLocation+" heures au tarif horaire de "+tarifHoraire+" franc(s)");
         System.out.print("Le montant total à  payer est de ");
         System.out.println(coutLocation + " franc(s).");
 
