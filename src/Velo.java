@@ -4,25 +4,38 @@ public class Velo {
 
     public static void main(String[] args) {
         Scanner clavier = new Scanner(System.in);
-        System.out.print("Donnez l'heure de dÃ©but de la location (un entier) : ");
+        System.out.print("Donnez l'heure de début de la location (un entier) : ");
         int debut = clavier.nextInt();
         System.out.print("Donnez l'heure de fin de la location (un entier) : ");
         int fin = clavier.nextInt();
 
-        /*******************************************
-         * Completez le programme a partir d'ici.
-         *******************************************/
-
-        System.out.println("Les heures doivent Ãªtre comprises entre 0 et 24 !");
-        System.out.println("Bizarre, vous n'avez pas louÃ© votre vÃ©lo bien longtemps !");
-        System.out.println("Bizarre, le dÃ©but de la location est aprÃ¨s la fin ...");
-        System.out.println("Vous avez louÃ© votre vÃ©lo pendant");
-        System.out.print("Le montant total Ã  payer est de ");
-        System.out.println(" franc(s).");
-
-        /*******************************************
-         * Ne rien modifier apres cette ligne.
-         *******************************************/
+        int dureeLocation = fin - debut;
+        double tarifHoraire = 0.0;
+        double tarifNuit = 1.0;
+        double tarifJour = 2.0;
+        double coutLocation = 0.0;
+        
+        if (debut<0 || debut>24) {
+        	System.out.println("Les heures doivent être comprises entre 0 et 24 !");
+        }
+        	if (dureeLocation<1) {
+        		System.out.println("Bizarre, vous n'avez pas loué votre vélo bien longtemps !");
+        	}
+        		if (fin<debut) {
+        			System.out.println("Bizarre, le début de la location est après la fin ...");
+        		}
+        
+        if (debut < 7 && debut > 17 || fin < 7 && fin > 17) {
+        	coutLocation = dureeLocation * tarifNuit;
+        	tarifHoraire = tarifNuit;
+        }
+        	if (debut > 7 && debut < 17 || fin > 7 && fin < 17) {
+        		coutLocation = dureeLocation * tarifJour;
+        		tarifHoraire = tarifJour;
+        	}
+        System.out.println("Vous avez loué votre vélo pendant "+dureeLocation+" heures au tarif horaire de "+tarifHoraire+" franc(s)");
+        System.out.print("Le montant total à  payer est de ");
+        System.out.println(coutLocation + " franc(s).");
 
         clavier.close();
     }
