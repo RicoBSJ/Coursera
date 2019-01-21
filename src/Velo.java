@@ -25,18 +25,18 @@ public class Velo {
         			System.out.println("Bizarre, le début de la location est après la fin ...");
         		}
         
-        if (fin < 7 && fin > 17 && debut < 7 && debut > 17) {
-        	coutLocation = dureeLocation * tarifNuit;
-        	tarifHoraire = tarifNuit;
-        }
-        if (fin >= 7 && fin <= 17 && debut >= 7 && debut <= 17) {
-        	coutLocation = dureeLocation * tarifJour;
-        	tarifHoraire = tarifJour;
+        if (debut >= 17 || debut < 7) {
+        	if (fin > 17 || fin <= 7) {
+            		coutLocation = dureeLocation * tarifNuit;
+            		tarifHoraire = tarifNuit;
+        	}
+        } else {
+            	coutLocation = dureeLocation * tarifJour;
+            	tarifHoraire = tarifJour;
         	}
     	System.out.println("Vous avez loué votre vélo pendant "+dureeLocation+" heures au tarif horaire de "+tarifHoraire+" franc(s)");
-        System.out.print("Le montant total à  payer est de ");
+        System.out.print("Le montant total à payer est de ");
         System.out.println(coutLocation + " franc(s).");
-
         clavier.close();
+        }
     }
-}
